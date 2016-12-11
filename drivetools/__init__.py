@@ -5,3 +5,5 @@ from .tools import export
 
 from .tools import MIME_FILE
 from .tools import MIME_CSV_SHEETS
+
+from .tools import SCOPES_READONLY
