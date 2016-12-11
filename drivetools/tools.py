@@ -133,7 +133,7 @@ def _add_and_query(query):
         return query
 
 
-def search(clien_secret,
+def search(client_secret,
            name=None, parent_id=None, mimeType=None,
            modified_time=None):
     """
