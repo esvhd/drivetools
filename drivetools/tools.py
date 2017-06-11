@@ -11,11 +11,13 @@ from oauth2client import client
 from oauth2client import tools
 from oauth2client.file import Storage
 
-try:
-    import argparse
-    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-except ImportError:
-    flags = None
+import argparse
+
+# try:
+#     import argparse
+#     flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
+# except ImportError:
+#     flags = None
 
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/drive-python-quickstart.json
@@ -49,9 +51,12 @@ def get_credentials(client_secret):
         flow = client.flow_from_clientsecrets(client_secret,
                                               SCOPES_READONLY)
         # flow.user_agent = APPLICATION_NAME
+
+        flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
         if flags:
             credentials = tools.run_flow(flow, store, flags)
-        else:  # Needed only for compatibility with Python 2.6
+        else:
+            # Needed only for compatibility with Python 2.6
             credentials = tools.run(flow, store)
         print('Storing credentials to ' + credential_path)
     return credentials
